@@ -3,11 +3,17 @@ package com.qa.ExtentReporterNG;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Listener implements ITestListener {
+
     private static long endTime;
     private static void setStartTime(long startTime) {
     }
@@ -63,4 +69,5 @@ public class Listener implements ITestListener {
         } else
             ExtentTestManager.getTest().skip(MarkupHelper.createLabel("Test Skipped", ExtentColor.ORANGE));
     }
+
 }

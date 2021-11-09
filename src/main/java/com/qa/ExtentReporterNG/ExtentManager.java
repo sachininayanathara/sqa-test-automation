@@ -3,17 +3,16 @@ package com.qa.ExtentReporterNG;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
 
 import java.io.File;
 
-public abstract class ExtentManager {
+public class ExtentManager {
+
     private static String reportBaseDirectory;
     private static ExtentReports extent;
     public static final String OUTPUT_FOLDER_SCREENSHOTS ="/Screenshots/";
-    public static final String REPORT_FILE_PATH =System.getProperty("C:\\Users\\Sachini Nayanathara\\Documents\\Projects\\SQA_Assignment_Test\\Automation");
-    private static com.qa.ExtentReporterNG.ExtentManager ExtentManager;
+    public static final String REPORT_FILE_PATH =System.getProperty("user.dir")+ "/Extent_Reports/";
+
 
     public static ExtentReports getInstance() {
         if (extent == null)
@@ -47,6 +46,7 @@ public abstract class ExtentManager {
 
     public static void initDirectories() {
         try {
+            System.out.println("Heree");
             createFolder(REPORT_FILE_PATH + OUTPUT_FOLDER_SCREENSHOTS);
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,18 +56,4 @@ public abstract class ExtentManager {
         File file = new File(folderPath);
         if (!file.exists()) file.mkdirs();
     }
-
-    public abstract void onStart(ITestContext context);
-
-    public abstract void onFinish(ITestContext context);
-
-    public abstract void onTestStart(ITestResult result);
-
-    public abstract void onTestSuccess(ITestResult result);
-
-    public abstract void onTestFailure(ITestResult result);
-
-    public abstract void onTestSkipped(ITestResult result);
-
-    public abstract void onTestFailedButWithinSuccessPercentage(ITestResult result);
 }

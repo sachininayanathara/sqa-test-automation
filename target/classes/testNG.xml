@@ -6,4 +6,10 @@
         <listener class-name = "com.qa.ExtentReporterNG.Listener" />
     </listeners>
 
+    <test name="Free CRM App Test Cases">
+        <classes>
+            <class name="com.qa.test.LoginPageTest"></class>
+        </classes>
+    </test>
+
 </suite>
